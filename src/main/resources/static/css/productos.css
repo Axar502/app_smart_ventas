@@ -1,0 +1,175 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7fafc;
+}
+/* estilos para la barra de navegación */
+header {
+    background-color: #FF5500; /* Color de fondo del encabezado */
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+/* Barra de navegación */
+nav {
+    background-color: #2d3748; /* Color oscuro para el fondo del menú */
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 5px 10px;
+    transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #FF5500;
+    border-radius: 4px;
+}
+
+
+/* Estilos para el contenedor de productos */
+.container {
+    padding: 20px;
+}
+
+
+/* Estilo de la tabla */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+table {
+    border: 1px solid #ddd; /* Borde de la tabla */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra para darle un efecto más elegante */
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* Estilos generales para el formulario */
+.formproducto {
+    max-width: 500px; /* Ancho máximo del formulario */
+    margin: 0 auto; /* Centra el formulario horizontalmente */
+    padding: 20px;
+    background-color: #fff; /* Fondo blanco para el formulario */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    box-sizing: border-box;
+}
+
+/* Estilo de los grupos de entrada */
+.form-group {
+    margin-bottom: 15px; /* Espaciado entre campos */
+}
+
+/* Estilos para los campos de entrada */
+.form-group input {
+    width: 100%; /* Asegura que los inputs ocupen todo el ancho */
+    padding: 10px;
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de fuente */
+    box-sizing: border-box; /* Asegura que el padding no afecte el tamaño */
+    transition: border-color 0.3s ease; /* Transición suave para el borde */
+}
+
+/* Cambio de borde cuando el input está enfocado */
+.form-group input:focus {
+    border-color: #4299e1; /* Color de borde al enfocar */
+    outline: none; /* Elimina el borde por defecto */
+}
+
+/* Estilo del botón */
+button {
+    width: 100%; /* Hace que el botón ocupe todo el ancho */
+    padding: 10px;
+    background-color: #e85e19; /* Fondo azul */
+    color: #fff; /* Texto blanco */
+    border: none; /* Elimina el borde por defecto */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de fuente */
+    cursor: pointer; /* Cursor de mano */
+    transition: background-color 0.3s ease; /* Transición para el fondo */
+}
+
+/* Cambio de color en el botón cuando se pasa el cursor */
+button:hover {
+    background-color: #FF5500; /* Color más oscuro al pasar el cursor */
+}
+
+/* Estilo de los mensajes de éxito y error */
+.success-message, .error-message {
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.success-message {
+    background-color: #d4edda; /* Fondo verde claro para el éxito */
+    color: #155724;
+}
+
+.error-message {
+    background-color: #f8d7da; /* Fondo rojo claro para el error */
+    color: #721c24;
+}
+
+/*Link coqueto*/
+/* Estilos básicos para los enlaces */
+.link-coqueto {
+    text-decoration: none;
+    color: #4CAF50; /* Verde vibrante */
+    font-size: 16px;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s; /* Transición suave */
+}
+
+/* Efecto hover: cambia el color de fondo y el color del texto */
+.link-coqueto:hover {
+    background-color: #4CAF50;
+    color: white; /* Cambia el color del texto al pasar el mouse */
+}
+
+/* Estilo cuando el enlace está activo */
+.link-coqueto:active {
+    background-color: #45a049;
+    color: white;
+}

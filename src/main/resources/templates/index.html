@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Inicio - Smart Ventas</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Enlace al archivo CSS -->
+</head>
+<body>
+<header>
+    <h1>Smart Ventas</h1>
+</header>
+<nav>
+    <ul>
+        <li><a th:href="@{/}">Inicio</a></li>
+        <li><a th:href="@{/productos}">Productos</a></li>
+        <li><a th:href="@{/ventas}">Ventas</a></li>
+        <li><a th:href="@{/inventario}">Inventario</a></li>
+        <li><a th:href="@{/clientes}">Clientes</a></li>
+    </ul>
+</nav>
+<main>
+    <section class="intro">
+        <h2>Bienvenido a Smart Ventas</h2>
+        <p>Desde aquí puedes acceder a las diferentes secciones de tu sistema de ventas para gestionar productos, ventas, inventario y más.</p>
+    </section>
+</main>
+<footer>
+    <p>&copy; 2024 Smart Ventas. Todos los derechos reservados.</p>
+</footer>
+</body>
+</html>

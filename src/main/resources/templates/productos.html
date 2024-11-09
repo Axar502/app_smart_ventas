@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Productos - Smart Ventas</title>
+    <link rel="stylesheet" href="/css/productos.css"> <!-- Enlace al archivo CSS específico -->
+</head>
+<body>
+
+<!-- Barra de navegación -->
+<header>
+    <h1>Smart Ventas</h1>
+</header>
+<nav>
+    <ul>
+        <li><a th:href="@{/}">Inicio</a></li>
+        <li><a th:href="@{/productos}">Productos</a></li>
+        <li><a th:href="@{/ventas}">Ventas</a></li>
+        <li><a th:href="@{/inventario}">Inventario</a></li>
+        <li><a th:href="@{/clientes}">Clientes</a></li>
+    </ul>
+</nav>
+<!-- Contenedor de la página de productos -->
+<div class="container">
+    <h1>Productos</h1>
+
+    <!-- Mensajes de éxito y error -->
+    <div th:if="${successMessage}" class="success-message">
+        <p th:text="${successMessage}"></p>
+    </div>
+    <div th:if="${errorMessage}" class="error-message">
+        <p th:text="${errorMessage}"></p>
+    </div>
+
+    <!-- Tabla de productos -->
+    <table>
+        <thead>
+        <tr>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="producto : ${productos}">
+            <td th:text="${producto.codigoProducto}"></td>
+            <td th:text="${producto.nombreProducto}"></td>
+            <td th:text="${producto.precioUnitario}"></td>
+            <td th:text="${producto.cantidadProducto}"></td>
+            <td>
+                <!-- Enlace para editar el producto -->
+                <a th:href="@{/productos/editar(codigo_producto=${producto.codigoProducto})}" class="link-coqueto">Editar</a>
+            
+                <!-- Enlace para eliminar el producto -->
+              
+                <a th:href="@{/productos/eliminar(codigo_producto=${producto.codigoProducto})}" class="link-coqueto" onclick="return confirm('¿Estás seguro de eliminar este producto?')">Eliminar</a>
+
+            </td>
+                           
+        </tr>
+        </tbody>
+    </table>
+
+ 
+</div>
+<div class="formproducto">
+       <!-- Formulario para agregar productos -->
+       <form th:action="@{/productos}" method="post">
+        <div class="form-group">
+            <input type="text" name="codigoProducto" placeholder="Código" required />
+        </div>
+        <div class="form-group">
+            <input type="text" name="nombreProducto" placeholder="Nombre" required />
+        </div>
+        <div class="form-group">
+            <input type="text" name="precioUnitario" placeholder="Precio" required />
+        </div>
+        <div class="form-group">
+            <input type="text" name="cantidadProducto" placeholder="Cantidad" required />
+        </div>
+        <button type="submit">Agregar Producto</button>
+    </form>
+</div>
+
+</body>
+</html>

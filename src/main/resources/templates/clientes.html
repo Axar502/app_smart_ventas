@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Clientes - Smart Ventas</title>
+    <link rel="stylesheet" href="/css/productos.css"> <!-- Enlace al archivo CSS específico -->
+</head>
+<body>
+
+<!-- Barra de navegación -->
+<header>
+    <h1>Smart Ventas</h1>
+</header>
+<nav>
+    <ul>
+        <li><a th:href="@{/}">Inicio</a></li>
+        <li><a th:href="@{/productos}">Productos</a></li>
+        <li><a th:href="@{/ventas}">Ventas</a></li>
+        <li><a th:href="@{/inventario}">Inventario</a></li>
+        <li><a th:href="@{/clientes}">Clientes</a></li>
+    </ul>
+</nav>
+
+<!-- Contenedor de la página de clientes -->
+<div class="container">
+    <h2>Lista de Clientes</h2>
+
+    <!-- Mensajes de éxito y error -->
+    <div th:if="${successMessage}" class="success-message">
+        <p th:text="${successMessage}"></p>
+    </div>
+    <div th:if="${errorMessage}" class="error-message">
+        <p th:text="${errorMessage}"></p>
+    </div>
+
+    <!-- Tabla de clientes -->
+    <table>
+        <thead>
+            <tr>
+                <th>ID Cliente</th>
+                <th>Nombre</th>
+                <th>Teléfono</th>
+                <th>Dirección</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Iterar sobre la lista de clientes -->
+            <tr th:each="cliente : ${clientes}">
+                <td th:text="${cliente.idCliente}"></td>
+                <td th:text="${cliente.nombreCliente}"></td>
+                <td th:text="${cliente.telefonoCliente}"></td>
+                <td th:text="${cliente.direccionCliente}"></td>
+                <td>
+                    <!-- Enlace para editar el cliente -->
+                    <a th:href="@{/clientes/editar/{idCliente}(idCliente=${cliente.idCliente})}" class="link-coqueto">Editar</a>
+
+                
+                    <!-- Enlace para eliminar el cliente -->
+                    <a th:href="@{/clientes/eliminar(idCliente=${cliente.idCliente})}" class="link-coqueto" onclick="return confirm('¿Estás seguro de eliminar este cliente?')">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+</div>
+
+<!-- Formulario para agregar o editar clientes -->
+<div class="formproducto">
+    <form th:action="@{/clientes/guardar}" method="post">
+        <!-- Campo ID solo se muestra si es edición -->
+        <div class="form-group" th:if="${cliente != null}">
+            <input type="text" name="idCliente" th:value="${cliente.idCliente}" placeholder="ID Cliente" readonly />
+        </div>
+        <div class="form-group">
+            <input type="text" name="nombreCliente" th:value="${cliente?.nombreCliente}" placeholder="Nombre" required />
+        </div>
+        <div class="form-group">
+            <input type="text" name="telefonoCliente" th:value="${cliente?.telefonoCliente}" placeholder="Teléfono" required />
+        </div>
+        <div class="form-group">
+            <input type="text" name="direccionCliente" th:value="${cliente?.direccionCliente}" placeholder="Dirección" required />
+        </div>
+        <button type="submit">Guardar Cliente</button>
+    </form>
+</div>
+
+</body>
+</html>

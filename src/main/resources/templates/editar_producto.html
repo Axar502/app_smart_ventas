@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Editar Producto</title>
+    <link rel="stylesheet" href="/css/productos.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Editar Producto</h1>
+
+        <!-- Mensajes de éxito y error -->
+        <div th:if="${successMessage}" class="success-message">
+            <p th:text="${successMessage}"></p>
+        </div>
+        <div th:if="${errorMessage}" class="error-message">
+            <p th:text="${errorMessage}"></p>
+        </div>
+
+       <div class="formproducto">
+         <!-- Formulario para editar producto -->
+         <form th:action="@{/productos/editar}" method="post">
+            <div class="form-group">
+                <input type="text" th:value="${producto.codigoProducto}" name="codigoProducto" placeholder="Código" readonly />
+            </div>
+            <div class="form-group">
+                <input type="text" th:value="${producto.nombreProducto}" name="nombreProducto" placeholder="Nombre" required />
+            </div>
+            <div class="form-group">
+                <input type="text" th:value="${producto.precioUnitario}" name="precioUnitario" placeholder="Precio" required />
+            </div>
+            <div class="form-group">
+                <input type="text" th:value="${producto.cantidadProducto}" name="cantidadProducto" placeholder="Cantidad" required />
+            </div>
+            <button type="submit">Actualizar Producto</button>
+        </form>
+        
+       </div>
+
+        <!-- Enlace para volver a la lista de productos -->
+        <a href="/productos"  class="link-coqueto">Volver a la lista de productos</a>
+    </div>
+</body>
+</html>
