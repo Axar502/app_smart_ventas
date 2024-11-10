@@ -51,8 +51,10 @@
                 <td th:text="${cliente.telefonoCliente}"></td>
                 <td th:text="${cliente.direccionCliente}"></td>
                 <td>
-                    <!-- Enlace para editar el cliente -->
-                    <a th:href="@{/clientes/editar/{idCliente}(idCliente=${cliente.idCliente})}" class="link-coqueto">Editar</a>
+                    <a th:href="@{/clientes/editar(idCliente=${cliente.idCliente})}" class="link-coqueto">Editar</a>
+
+
+
 
                 
                     <!-- Enlace para eliminar el cliente -->

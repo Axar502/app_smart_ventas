@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Editar Producto</title>
+    <title>Editar Cliente</title>
     <link rel="stylesheet" href="/css/productos.css">
 </head>
 <body>
     <div class="container">
-        <h1>Editar Producto</h1>
+        <h1>Editar Cliente</h1>
 
         <!-- Mensajes de éxito y error -->
         <div th:if="${successMessage}" class="success-message">
@@ -16,28 +16,30 @@
             <p th:text="${errorMessage}"></p>
         </div>
 
-        <div class="formcliente">
-            <h2>Editar Cliente</h2>
+        <div class="formproducto">
         
-            <div class="formcliente">
-                <h2>Editar Cliente</h2>
-            
-                <form th:action="@{/clientes/actualizar}" method="post">
+                <form th:action="@{/clientes/editar}" method="post">
+                    <!-- Campo oculto para el ID del Cliente -->
+                    <input type="hidden" name="idCliente" th:value="${cliente.idCliente}" />
+                    
                     <!-- Campo Nombre del Cliente -->
                     <div class="form-group">
                         <input type="text" name="nombreCliente" th:value="${cliente.nombreCliente}" placeholder="Nombre" required />
                     </div>
+                    
                     <!-- Campo Teléfono del Cliente -->
                     <div class="form-group">
                         <input type="text" name="telefonoCliente" th:value="${cliente.telefonoCliente}" placeholder="Teléfono" required />
                     </div>
+                    
                     <!-- Campo Dirección del Cliente -->
                     <div class="form-group">
                         <input type="text" name="direccionCliente" th:value="${cliente.direccionCliente}" placeholder="Dirección" required />
                     </div>
+                    
                     <button type="submit">Actualizar Cliente</button>
                 </form>
-            </div>
+                
             
         </div>
         

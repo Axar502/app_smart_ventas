@@ -65,27 +65,25 @@ public class ControladorCliente {
         return "redirect:/clientes"; // Redirigir a la lista de clientes
     }
 
-    // Mostrar el formulario de edición con los datos del cliente
-    @GetMapping("/clientes/editar")
-    public String editarCliente(@RequestParam("idCliente") Long idCliente, Model model) {
-        // Obtener cliente por ID, que devuelve un Optional
-        Cliente cliente = clienteService.obtenerClientePorId(idCliente)
-                .orElseThrow(() -> new RuntimeException("Cliente no encontrado")); // Si no se encuentra, lanza una excepción
+  // Método para mostrar el formulario de edición con los datos del cliente
+@GetMapping("/clientes/editar")
+public String editarCliente(@RequestParam("idCliente") Long idCliente, Model model) {
+    Cliente cliente = clienteService.obtenerClientePorId(idCliente) // Recupera el cliente por ID
+            .orElseThrow(() -> new RuntimeException("Cliente no encontrado"));
+    model.addAttribute("cliente", cliente); // Pasamos el cliente a la vista
+    return "editar_cliente"; // Vista para editar el cliente
+}
 
-        // Pasar el cliente a la vista para su edición
-        model.addAttribute("cliente", cliente); 
-        return "formulario_cliente"; // Vista para editar el cliente
+// Método para actualizar el cliente
+@PostMapping("/clientes/editar")
+public String actualizarCliente(Cliente cliente, RedirectAttributes redirectAttributes) {
+    try {
+        clienteService.guardarCliente(cliente); // Reutilizamos el método guardar para actualizar
+        redirectAttributes.addFlashAttribute("successMessage", "Cliente actualizado con éxito.");
+    } catch (IllegalArgumentException e) {
+        redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
     }
+    return "redirect:/clientes"; // Redirige a la lista de clientes
+}
 
-    // Actualizar cliente
-    @PostMapping("/clientes/editar")
-    public String actualizarCliente(@ModelAttribute Cliente cliente, RedirectAttributes redirectAttributes) {
-        try {
-            clienteService.guardarCliente(cliente); // Guardar el cliente (mismo método que para agregar)
-            redirectAttributes.addFlashAttribute("successMessage", "Cliente actualizado con éxito.");
-        } catch (IllegalArgumentException e) {
-            redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
-        }
-        return "redirect:/clientes"; // Redirigir a la lista de clientes
-    }
 }
